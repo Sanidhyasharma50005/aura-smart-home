@@ -1,0 +1,403 @@
+/* ==========================================================================
+   AURA Smart Home OS - Defined, Bordered, Full-Width Responsive Theme
+   Supports 1-click Light / Dark Mode Toggle with Functional Color Identities
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* ================= LIGHT THEME (Default) ================= */
+  --bg-app: #f1f4f9;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f8fafc;
+  --bg-surface-subtle: #f1f5f9;
+  --border-defined: #cbd5e1;
+  --border-strong: #94a3b8;
+  --border-subtle: #e2e8f0;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --header-border: #cbd5e1;
+
+  /* Functional Colors */
+  --color-amber: #f59e0b;
+  --color-amber-bg: #fffbeb;
+  --color-amber-border: #f59e0b;
+
+  --color-sky: #0284c7;
+  --color-sky-bg: #f0f9ff;
+  --color-sky-border: #0284c7;
+
+  --color-emerald: #059669;
+  --color-emerald-bg: #f0fdf4;
+  --color-emerald-border: #059669;
+
+  --color-indigo: #6366f1;
+  --color-indigo-bg: #eef2ff;
+  --color-indigo-border: #6366f1;
+
+  --color-rose: #e11d48;
+  --color-rose-bg: #fff1f2;
+  --color-rose-border: #e11d48;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-card: 0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+}
+
+/* ================= DARK THEME ================= */
+body.dark-theme {
+  --bg-app: #080c15;
+  --bg-surface: #0f1626;
+  --bg-surface-elevated: #162035;
+  --bg-surface-subtle: #1c2740;
+  --border-defined: #263550;
+  --border-strong: #3b4e72;
+  --border-subtle: #1e293b;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --header-bg: rgba(15, 22, 38, 0.95);
+  --header-border: #263550;
+
+  /* Functional Colors (Dark) */
+  --color-amber-bg: rgba(245, 158, 11, 0.12);
+  --color-amber-border: #f59e0b;
+
+  --color-sky-bg: rgba(2, 132, 199, 0.12);
+  --color-sky-border: #38bdf8;
+
+  --color-emerald-bg: rgba(5, 150, 105, 0.12);
+  --color-emerald-border: #10b981;
+
+  --color-indigo-bg: rgba(99, 102, 241, 0.12);
+  --color-indigo-border: #818cf8;
+
+  --color-rose-bg: rgba(225, 29, 72, 0.15);
+  --color-rose-border: #f43f5e;
+
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Master Defined Cards */
+.aura-card {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-defined);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s ease;
+}
+
+.aura-card:hover {
+  border-color: var(--border-strong);
+}
+
+/* Sidebar Column Dividers */
+.sidebar-panel {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-defined);
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+}
+
+/* Defined Appliance Tiles */
+.device-tile {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-defined);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.device-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+/* Device Functional Border Identities */
+.device-tile.is-on.lighting-type {
+  border-color: var(--color-amber-border);
+  background-color: var(--color-amber-bg);
+  box-shadow: 0 4px 15px -2px rgba(245, 158, 11, 0.18);
+}
+
+.device-tile.is-on.climate-type {
+  border-color: var(--color-sky-border);
+  background-color: var(--color-sky-bg);
+  box-shadow: 0 4px 15px -2px rgba(2, 132, 199, 0.18);
+}
+
+.device-tile.is-on.fan-type {
+  border-color: var(--color-emerald-border);
+  background-color: var(--color-emerald-bg);
+  box-shadow: 0 4px 15px -2px rgba(5, 150, 105, 0.18);
+}
+
+.device-tile.is-on.plug-type {
+  border-color: var(--color-indigo-border);
+  background-color: var(--color-indigo-bg);
+  box-shadow: 0 4px 15px -2px rgba(99, 102, 241, 0.18);
+}
+
+/* Tactile iOS Switch */
+.ios-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.ios-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ios-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 9999px;
+  border: 1px solid var(--border-defined);
+}
+
+body.dark-theme .ios-slider {
+  background-color: #334155;
+}
+
+.ios-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .ios-slider.slider-amber {
+  background-color: #f59e0b;
+  border-color: #d97706;
+}
+
+input:checked + .ios-slider.slider-blue {
+  background-color: #0284c7;
+  border-color: #0369a1;
+}
+
+input:checked + .ios-slider.slider-green {
+  background-color: #059669;
+  border-color: #047857;
+}
+
+input:checked + .ios-slider.slider-indigo {
+  background-color: #6366f1;
+  border-color: #4f46e5;
+}
+
+input:checked + .ios-slider:before {
+  transform: translateX(22px);
+}
+
+/* Theme Toggle Pill Switch */
+.theme-switch-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  background: var(--bg-surface-subtle);
+  border: 1.5px solid var(--border-defined);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-switch-btn {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+  color: var(--text-muted);
+}
+
+.theme-switch-btn.active {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Scene Pills */
+.scene-pill {
+  padding: 0.65rem 1.15rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-defined);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.scene-pill:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.scene-pill.active {
+  border-color: #0284c7;
+  background-color: #f0f9ff;
+  color: #0369a1;
+}
+
+body.dark-theme .scene-pill.active {
+  background-color: rgba(2, 132, 199, 0.2);
+  color: #38bdf8;
+}
+
+/* Fan Rotating Animation */
+@keyframes spin-fan {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.fan-running {
+  animation: spin-fan var(--fan-speed, 1.2s) linear infinite;
+  transform-origin: center center;
+}
+
+/* Custom Range Sliders */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--border-defined);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  border: 2.5px solid #0284c7;
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Modal Dialog Styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-defined);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.96);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.open .modal-content {
+  transform: scale(1);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-defined);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
