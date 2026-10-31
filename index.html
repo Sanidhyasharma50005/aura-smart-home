@@ -288,7 +288,7 @@
               <div>
                 <span class="text-[11px] text-rose-600 dark:text-rose-400 font-bold uppercase tracking-wider">Temperature</span>
                 <div id="gauge-temp" class="text-2xl font-black text-[var(--text-primary)] font-mono mt-0.5">27.8°C</div>
-                <span class="text-[10px] text-rose-500 font-medium">DHT22 Digital</span>
+                <span class="text-[10px] text-rose-700 dark:text-rose-300 font-semibold sensor-tag-temp">DHT22 Digital</span>
               </div>
               <div class="w-10 h-10 rounded-xl bg-rose-100 dark:bg-rose-950 border border-rose-300 dark:border-rose-800 flex items-center justify-center text-rose-600 text-lg shadow-sm">
                 🌡️
@@ -300,7 +300,7 @@
               <div>
                 <span class="text-[11px] text-sky-600 dark:text-sky-400 font-bold uppercase tracking-wider">Humidity</span>
                 <div id="gauge-hum" class="text-2xl font-black text-[var(--text-primary)] font-mono mt-0.5">54%</div>
-                <span class="text-[10px] text-sky-500 font-medium">Indoor Ambient</span>
+                <span class="text-[10px] text-sky-700 dark:text-sky-300 font-semibold sensor-tag-hum">Indoor Ambient</span>
               </div>
               <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-950 border border-sky-300 dark:border-sky-800 flex items-center justify-center text-sky-600 text-lg shadow-sm">
                 💧
@@ -312,7 +312,7 @@
               <div>
                 <span class="text-[11px] text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">Daylight</span>
                 <div id="gauge-light" class="text-2xl font-black text-[var(--text-primary)] font-mono mt-0.5">195 Lux</div>
-                <span class="text-[10px] text-amber-500 font-medium">LDR Photocell</span>
+                <span class="text-[10px] text-amber-700 dark:text-amber-300 font-semibold sensor-tag-light">LDR Photocell</span>
               </div>
               <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950 border border-amber-300 dark:border-amber-800 flex items-center justify-center text-amber-600 text-lg shadow-sm">
                 ☀️
@@ -324,7 +324,7 @@
               <div>
                 <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">Presence</span>
                 <div id="gauge-motion" class="text-2xl font-black text-[var(--text-primary)] font-mono mt-0.5">Occupied</div>
-                <span class="text-[10px] text-emerald-600 font-mono font-medium">PIR Radar</span>
+                <span class="text-[10px] text-emerald-700 dark:text-emerald-300 font-mono font-semibold sensor-tag-presence">PIR Radar</span>
               </div>
               <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-800 flex items-center justify-center text-emerald-600 text-lg shadow-sm">
                 👤
@@ -485,32 +485,32 @@
       <aside class="lg:col-span-3 xl:col-span-3 space-y-5">
         
         <!-- Master Emergency Cutoff Button (Defined, Bold & Visible) -->
-        <div class="sidebar-panel p-4 bg-rose-50/70 dark:bg-rose-950/20 border-rose-300 dark:border-rose-900/80 space-y-2.5">
+        <div class="sidebar-panel p-4 bg-rose-50/80 dark:bg-rose-950/30 border-rose-300 dark:border-rose-900/80 space-y-2.5">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-rose-700 dark:text-rose-400 uppercase tracking-wider">Hardware Killswitch</span>
+            <span class="text-xs font-bold text-rose-700 dark:text-rose-300 uppercase tracking-wider">Hardware Killswitch</span>
             <span class="text-sm">🛑</span>
           </div>
           <button id="btn-global-estop" onclick="toggleEmergencyStop()" class="w-full py-3 px-4 rounded-xl text-white font-extrabold text-xs bg-rose-600 hover:bg-rose-700 transition flex items-center justify-center gap-2 shadow-md shadow-rose-600/30">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
             EMERGENCY CUTOFF (E-STOP)
           </button>
-          <p class="text-[10px] text-rose-600 dark:text-rose-400 text-center">Forces all 4 physical relays OPEN immediately.</p>
+          <p class="text-[11px] text-rose-700 dark:text-rose-300 text-center font-bold">Forces all 4 physical relays OPEN immediately.</p>
         </div>
 
         <!-- Live Power Meter Dial Card -->
         <div class="sidebar-panel p-4 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Live Power Meter</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] dark:text-slate-300">Live Power Meter</span>
             <span class="text-xs font-mono font-bold text-sky-600 dark:text-sky-400">Tariff: ₹7.50/kWh</span>
           </div>
           
           <div class="p-4 bg-[var(--bg-surface-elevated)] rounded-xl border-[1.5px] border-[var(--border-defined)] text-center space-y-1">
-            <span class="text-[11px] text-[var(--text-dim)] font-mono uppercase">Instant Consumption</span>
+            <span class="text-[11px] text-slate-600 dark:text-slate-300 font-mono uppercase font-bold">Instant Consumption</span>
             <div id="side-power-val" class="text-3xl font-black text-sky-600 dark:text-sky-400 font-mono">858.0 W</div>
             <div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden mt-2">
               <div class="bg-gradient-to-r from-emerald-500 via-sky-500 to-amber-500 h-2" style="width: 58%"></div>
             </div>
-            <div class="flex justify-between text-[10px] text-[var(--text-dim)] font-mono pt-1">
+            <div class="flex justify-between text-[11px] text-slate-600 dark:text-slate-300 font-mono pt-1 font-bold">
               <span>0 W</span>
               <span>1500 W Max</span>
             </div>
@@ -518,12 +518,12 @@
 
           <div class="grid grid-cols-2 gap-2 text-xs font-mono">
             <div class="p-2.5 bg-[var(--bg-surface-subtle)] rounded-xl border border-[var(--border-subtle)]">
-              <span class="text-[var(--text-dim)] text-[10px] block">Daily Energy</span>
-              <span class="font-bold text-emerald-600">4.83 kWh</span>
+              <span class="text-slate-600 dark:text-slate-300 text-[10px] block font-bold">Daily Energy</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-sm">4.83 kWh</span>
             </div>
             <div class="p-2.5 bg-[var(--bg-surface-subtle)] rounded-xl border border-[var(--border-subtle)]">
-              <span class="text-[var(--text-dim)] text-[10px] block">Projected Mo.</span>
-              <span class="font-bold text-purple-600">₹1,086.60</span>
+              <span class="text-slate-600 dark:text-slate-300 text-[10px] block font-bold">Projected Mo.</span>
+              <span class="font-bold text-purple-700 dark:text-purple-400 text-sm">₹1,086.60</span>
             </div>
           </div>
         </div>
@@ -531,41 +531,41 @@
         <!-- Physical 4-Channel Relay Optocoupler Module -->
         <div class="sidebar-panel p-4 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Optocoupled Relays</span>
-            <span class="text-[10px] font-mono font-bold text-emerald-600">Active-LOW</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] dark:text-slate-300">Optocoupled Relays</span>
+            <span class="text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400">Active-LOW</span>
           </div>
 
           <div class="grid grid-cols-2 gap-2 text-xs font-mono">
-            <div class="p-2.5 rounded-xl border-[1.5px] border-emerald-300 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20">
+            <div class="p-2.5 rounded-xl border-[1.5px] border-emerald-300 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/40">
               <div class="flex justify-between items-center">
-                <span class="font-bold text-slate-800 dark:text-slate-200">CH 1</span>
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span class="font-bold text-slate-900 dark:text-white relay-channel-title">CH 1</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></span>
               </div>
-              <span class="text-[10px] text-emerald-700 dark:text-emerald-400 block mt-1">Fan · 35W</span>
+              <span class="text-xs text-emerald-800 dark:text-emerald-300 font-bold block mt-1 relay-channel-subtext">Fan · 35W</span>
             </div>
 
-            <div class="p-2.5 rounded-xl border-[1.5px] border-amber-300 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/20">
+            <div class="p-2.5 rounded-xl border-[1.5px] border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/40">
               <div class="flex justify-between items-center">
-                <span class="font-bold text-slate-800 dark:text-slate-200">CH 2</span>
-                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                <span class="font-bold text-slate-900 dark:text-white relay-channel-title">CH 2</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-sm shadow-amber-500/50"></span>
               </div>
-              <span class="text-[10px] text-amber-700 dark:text-amber-400 block mt-1">Light · 9.6W</span>
+              <span class="text-xs text-amber-800 dark:text-amber-300 font-bold block mt-1 relay-channel-subtext">Light · 9.6W</span>
             </div>
 
-            <div class="p-2.5 rounded-xl border-[1.5px] border-sky-300 dark:border-sky-800 bg-sky-50/50 dark:bg-sky-950/20">
+            <div class="p-2.5 rounded-xl border-[1.5px] border-sky-300 dark:border-sky-700 bg-sky-50 dark:bg-sky-950/40">
               <div class="flex justify-between items-center">
-                <span class="font-bold text-slate-800 dark:text-slate-200">CH 3</span>
-                <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                <span class="font-bold text-slate-900 dark:text-white relay-channel-title">CH 3</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 shadow-sm shadow-sky-500/50"></span>
               </div>
-              <span class="text-[10px] text-sky-700 dark:text-sky-400 block mt-1">AC · 840W</span>
+              <span class="text-xs text-sky-800 dark:text-sky-300 font-bold block mt-1 relay-channel-subtext">AC · 840W</span>
             </div>
 
-            <div class="p-2.5 rounded-xl border-[1.5px] border-slate-200 dark:border-slate-700 bg-[var(--bg-surface-subtle)]">
+            <div class="p-2.5 rounded-xl border-[1.5px] border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60">
               <div class="flex justify-between items-center">
-                <span class="font-bold text-slate-500">CH 4</span>
-                <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                <span class="font-bold text-slate-600 dark:text-slate-200 relay-channel-title">CH 4</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
               </div>
-              <span class="text-[10px] text-slate-400 block mt-1">Purifier · Off</span>
+              <span class="text-xs text-slate-600 dark:text-slate-300 font-medium block mt-1 relay-channel-subtext">Purifier · Off</span>
             </div>
           </div>
         </div>

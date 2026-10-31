@@ -1007,7 +1007,7 @@ function buildDeviceCardHtml(dev) {
     badgeClass = 'lighting-type';
     sliderTheme = 'slider-amber';
     iconContainer = `
-      <div class="w-12 h-12 rounded-2xl ${isOn ? 'bg-amber-100 border-amber-300 text-amber-600' : 'bg-slate-100 border-slate-200 text-slate-400'} border flex items-center justify-center shadow-sm transition">
+      <div class="w-12 h-12 rounded-2xl ${isOn ? 'bg-amber-100 dark:bg-amber-950/60 border-amber-300 dark:border-amber-700 text-amber-600 dark:text-amber-400' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500'} border flex items-center justify-center shadow-sm transition">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
       </div>`;
   } else if (isFan) {
@@ -1016,21 +1016,21 @@ function buildDeviceCardHtml(dev) {
     const spinClass = isOn && dev.level > 0 ? 'fan-running' : '';
     const speedSec = dev.level > 0 ? (2.2 - (dev.level / 100) * 1.8).toFixed(2) : 1;
     iconContainer = `
-      <div class="w-12 h-12 rounded-2xl ${isOn ? 'bg-emerald-100 border-emerald-300 text-emerald-600' : 'bg-slate-100 border-slate-200 text-slate-400'} border flex items-center justify-center shadow-sm transition">
+      <div class="w-12 h-12 rounded-2xl ${isOn ? 'bg-emerald-100 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-700 text-emerald-600 dark:text-emerald-400' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500'} border flex items-center justify-center shadow-sm transition">
         <svg style="--fan-speed: ${speedSec}s;" class="w-6 h-6 ${spinClass}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8V4m0 0l-3 3m3-3l3 3M8 12H4m0 0l3 3m-3-3l3-3m8 0l3 3m0 0l-3 3m3-3h-4m-4 4v4m0 0l-3-3m3 3l3-3"/></svg>
       </div>`;
   } else if (isClimate) {
     badgeClass = 'climate-type';
     sliderTheme = 'slider-blue';
     iconContainer = `
-      <div class="w-12 h-12 rounded-2xl ${isOn ? 'bg-sky-100 border-sky-300 text-sky-600' : 'bg-slate-100 border-slate-200 text-slate-400'} border flex items-center justify-center shadow-sm transition">
+      <div class="w-12 h-12 rounded-2xl ${isOn ? 'bg-sky-100 dark:bg-sky-950/60 border-sky-300 dark:border-sky-700 text-sky-600 dark:text-sky-400' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500'} border flex items-center justify-center shadow-sm transition">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
       </div>`;
   } else {
     badgeClass = 'plug-type';
     sliderTheme = 'slider-indigo';
     iconContainer = `
-      <div class="w-12 h-12 rounded-2xl ${isOn ? 'bg-indigo-100 border-indigo-300 text-indigo-600' : 'bg-slate-100 border-slate-200 text-slate-400'} border flex items-center justify-center shadow-sm transition">
+      <div class="w-12 h-12 rounded-2xl ${isOn ? 'bg-indigo-100 dark:bg-indigo-950/60 border-indigo-300 dark:border-indigo-700 text-indigo-600 dark:text-indigo-400' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500'} border flex items-center justify-center shadow-sm transition">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
       </div>`;
   }
@@ -1045,8 +1045,8 @@ function buildDeviceCardHtml(dev) {
         <div class="flex items-center gap-3">
           ${iconContainer}
           <div>
-            <span class="text-[10px] font-mono font-bold tracking-wider text-slate-400 uppercase">${roomNameFormatted}</span>
-            <h4 class="text-sm font-black text-slate-900 leading-tight">${dev.name}</h4>
+            <span class="device-room text-[10px] font-mono font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">${roomNameFormatted}</span>
+            <h4 class="device-title text-sm font-black text-slate-900 dark:text-white leading-tight">${dev.name}</h4>
           </div>
         </div>
 
@@ -1061,22 +1061,22 @@ function buildDeviceCardHtml(dev) {
       <div class="my-4">
         ${isClimate ? `
           <div class="flex items-center justify-between text-xs mb-1.5 font-bold">
-            <span class="text-slate-500">Cooling Setpoint</span>
-            <span class="font-mono text-sky-700 font-black">${dev.level}°C · ${dev.mode || 'COOL'}</span>
+            <span class="device-label text-slate-600 dark:text-slate-200">Cooling Setpoint</span>
+            <span class="font-mono text-sky-700 dark:text-sky-300 font-black">${dev.level}°C · ${dev.mode || 'COOL'}</span>
           </div>
           <input type="range" min="16" max="30" step="1" value="${dev.level}" oninput="setDeviceLevel('${dev.id}', this.value)" class="w-full">
-          <div class="flex justify-between text-[10px] text-slate-400 font-mono font-bold mt-1">
+          <div class="device-scale flex justify-between text-[10px] text-slate-500 dark:text-slate-400 font-mono font-bold mt-1">
             <span>16°C (Max)</span>
             <span>24°C (Eco)</span>
             <span>30°C</span>
           </div>
         ` : `
           <div class="flex items-center justify-between text-xs mb-1.5 font-bold">
-            <span class="text-slate-500">${isLighting ? 'Brightness' : isFan ? 'Fan Speed' : 'Power Level'}</span>
-            <span class="font-mono ${isLighting ? 'text-amber-700' : isFan ? 'text-emerald-700' : 'text-indigo-700'} font-black">${dev.level}%</span>
+            <span class="device-label text-slate-600 dark:text-slate-200">${isLighting ? 'Brightness' : isFan ? 'Fan Speed' : 'Power Level'}</span>
+            <span class="font-mono ${isLighting ? 'text-amber-700 dark:text-amber-300' : isFan ? 'text-emerald-700 dark:text-emerald-300' : 'text-indigo-700 dark:text-indigo-300'} font-black">${dev.level}%</span>
           </div>
           <input type="range" min="0" max="100" step="5" value="${dev.level}" oninput="setDeviceLevel('${dev.id}', this.value)" class="w-full">
-          <div class="flex justify-between text-[10px] text-slate-400 font-mono font-bold mt-1">
+          <div class="device-scale flex justify-between text-[10px] text-slate-500 dark:text-slate-400 font-mono font-bold mt-1">
             <span>0% (OFF)</span>
             <span>50%</span>
             <span>100% (High)</span>
@@ -1085,16 +1085,16 @@ function buildDeviceCardHtml(dev) {
       </div>
 
       <!-- Card Footer -->
-      <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-        <span class="text-slate-500 flex items-center gap-1.5 font-mono text-[11px] font-semibold">
-          <span class="w-2 h-2 rounded-full ${isOn ? (isLighting ? 'bg-amber-500' : isClimate ? 'bg-sky-500' : isFan ? 'bg-emerald-500' : 'bg-indigo-500') : 'bg-slate-300'}"></span>
+      <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
+        <span class="device-gpio text-slate-600 dark:text-slate-300 flex items-center gap-1.5 font-mono text-[11px] font-semibold">
+          <span class="w-2 h-2 rounded-full ${isOn ? (isLighting ? 'bg-amber-500' : isClimate ? 'bg-sky-500' : isFan ? 'bg-emerald-500' : 'bg-indigo-500') : 'bg-slate-400'}"></span>
           ${dev.gpio}
         </span>
         <div class="flex items-center gap-2">
-          <span class="font-mono font-black px-2 py-0.5 rounded-lg text-xs ${isOn ? (isLighting ? 'bg-amber-100 text-amber-800' : isClimate ? 'bg-sky-100 text-sky-800' : isFan ? 'bg-emerald-100 text-emerald-800' : 'bg-indigo-100 text-indigo-800') : 'bg-slate-100 text-slate-500'}">
+          <span class="font-mono font-black px-2.5 py-1 rounded-lg text-xs ${isOn ? (isLighting ? 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-200 border border-amber-300 dark:border-amber-700' : isClimate ? 'bg-sky-100 text-sky-900 dark:bg-sky-950 dark:text-sky-200 border border-sky-300 dark:border-sky-700' : isFan ? 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700' : 'bg-indigo-100 text-indigo-900 dark:bg-indigo-950 dark:text-indigo-200 border border-indigo-300 dark:border-indigo-700') : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700'}">
             ${dev.power} W
           </span>
-          <button onclick="openEditDeviceModal('${dev.id}')" class="text-slate-400 hover:text-slate-800 transition p-1" title="Device Config">
+          <button onclick="openEditDeviceModal('${dev.id}')" class="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition p-1" title="Device Config">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
           </button>
         </div>
@@ -1153,10 +1153,10 @@ function updateModeUI() {
   if (estopBtn) {
     if (AppState.eStopActive) {
       estopBtn.innerHTML = `⚠️ E-STOP ACTIVE (RESET)`;
-      estopBtn.classList.add('bg-rose-600');
+      estopBtn.className = 'w-full py-3 px-4 rounded-xl text-white font-black text-xs bg-rose-700 hover:bg-rose-800 ring-4 ring-rose-400 animate-pulse transition flex items-center justify-center gap-2 shadow-lg';
     } else {
       estopBtn.innerHTML = `<svg class="w-4 h-4 mr-1 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> EMERGENCY STOP`;
-      estopBtn.classList.remove('bg-rose-600');
+      estopBtn.className = 'w-full py-3 px-4 rounded-xl text-white font-black text-xs bg-rose-600 hover:bg-rose-700 transition flex items-center justify-center gap-2 shadow-md shadow-rose-600/30';
     }
   }
 }
@@ -1436,15 +1436,19 @@ function switchTab(tabId) {
 
 function setTheme(mode) {
   AppState.config.theme = mode;
-  document.body.classList.toggle('dark-theme', mode === 'dark');
+  const isDark = mode === 'dark';
+  document.documentElement.classList.toggle('dark', isDark);
+  document.body.classList.toggle('dark', isDark);
+  document.body.classList.toggle('dark-theme', isDark);
   
   const lightBtn = document.getElementById('theme-btn-light');
   const darkBtn = document.getElementById('theme-btn-dark');
   if (lightBtn && darkBtn) {
-    lightBtn.classList.toggle('active', mode === 'light');
-    darkBtn.classList.toggle('active', mode === 'dark');
+    lightBtn.classList.toggle('active', !isDark);
+    darkBtn.classList.toggle('active', isDark);
   }
   saveConfig();
+  renderDeviceGrid();
 }
 
 function toggleTheme() {

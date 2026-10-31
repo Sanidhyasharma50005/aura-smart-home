@@ -52,7 +52,9 @@
 }
 
 /* ================= DARK THEME ================= */
-body.dark-theme {
+body.dark-theme,
+html.dark,
+.dark {
   --bg-app: #080c15;
   --bg-surface: #0f1626;
   --bg-surface-elevated: #162035;
@@ -64,7 +66,7 @@ body.dark-theme {
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  --text-dim: #94a3b8;
 
   --header-bg: rgba(15, 22, 38, 0.95);
   --header-border: #263550;
@@ -401,3 +403,94 @@ input[type="range"]::-webkit-slider-thumb:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--border-strong);
 }
+
+/* ==========================================================================
+   HIGH CONTRAST TEXT RULES FOR DARK & LIGHT THEMES
+   Guarantees all text inside boxes, tiles, and sidebars is perfectly visible
+   ========================================================================== */
+
+/* Device Tile Contrast Enhancements */
+.device-tile {
+  color: var(--text-primary);
+}
+
+body.dark-theme .device-tile h4,
+.dark .device-tile h4,
+body.dark-theme .device-tile .device-name,
+.dark .device-tile .device-name {
+  color: #f8fafc !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .device-tile .text-slate-900,
+.dark .device-tile .text-slate-900 {
+  color: #f8fafc !important;
+}
+
+body.dark-theme .device-tile .text-slate-600,
+.dark .device-tile .text-slate-600,
+body.dark-theme .device-tile .text-slate-500,
+.dark .device-tile .text-slate-500 {
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .device-tile .text-slate-400,
+.dark .device-tile .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+/* Ensure scale markers (0%, 50%, 100%) are clearly visible */
+body.dark-theme .device-tile .device-scale,
+.dark .device-tile .device-scale,
+body.dark-theme .device-tile .font-mono.text-slate-400,
+.dark .device-tile .font-mono.text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+/* Master Hardware Killswitch Button - Always Solid Bold High-Contrast Red */
+#btn-global-estop {
+  background-color: #e11d48 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border: 1.5px solid #be123c !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.35);
+}
+
+#btn-global-estop:hover {
+  background-color: #be123c !important;
+}
+
+/* Optocoupler Relay Box Text in Dark Mode */
+body.dark-theme .relay-channel-title,
+.dark .relay-channel-title {
+  color: #f8fafc !important;
+}
+
+body.dark-theme .relay-channel-subtext,
+.dark .relay-channel-subtext {
+  color: #e2e8f0 !important;
+  font-weight: 600;
+}
+
+/* Sensor Telemetry Tags in Dark Mode */
+body.dark-theme .sensor-tag-temp,
+.dark .sensor-tag-temp {
+  color: #fda4af !important; /* Rose 300 */
+}
+
+body.dark-theme .sensor-tag-hum,
+.dark .sensor-tag-hum {
+  color: #7dd3fc !important; /* Sky 300 */
+}
+
+body.dark-theme .sensor-tag-light,
+.dark .sensor-tag-light {
+  color: #fde047 !important; /* Amber 300 */
+}
+
+body.dark-theme .sensor-tag-presence,
+.dark .sensor-tag-presence {
+  color: #86efac !important; /* Emerald 300 */
+}
+
