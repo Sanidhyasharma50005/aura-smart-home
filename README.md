@@ -51,17 +51,4 @@ AURA Smart Home OS is a real-time, production-ready home automation and energy m
 
 ---
 
-## 🚀 How to Run
 
-### Method 1: 1-Click Launch (Windows)
-Double-click `start.bat` in the `smart-home-automation` directory.
-
-### Method 2: Python HTTP Server
-```bash
-cd smart-home-automation
-python serve.py
-```
-Open your browser at `http://localhost:8080/index.html`.
-
-### Method 3: Standalone Browser Launch
-Simply double-click `index.html` to open it in Chrome, Edge, or Safari. It works with zero build steps or external dependencies.
