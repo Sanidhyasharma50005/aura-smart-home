@@ -1,5 +1,8 @@
 .vercel/
 __pycache__/
 *.pyc
+*.bak
+*.zip
+extracted/
 .DS_Store
 Thumbs.db
