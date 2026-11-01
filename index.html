@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AURA Smart Home OS | Defined IoT Dashboard</title>
-  
+  <title>AURA Smart Home OS | Adaptive IoT & Energy Management Platform</title>
+
   <!-- Tailwind CSS Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -30,36 +30,42 @@
 
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-  <!-- Custom Bespoke Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.0">
+
+  <!-- Custom Bespoke Stylesheet - Aurora OS Theme -->
+  <link rel="stylesheet" href="styles.css?v=5.0">
 </head>
-<body class="selection:bg-sky-500 selection:text-white pb-12">
+<body class="choice:bg-sky-500 selection:text-white pb-12">
 
   <!-- ========================================================================
        TOP HEADER & SYSTEM STATUS BAR (FULL WIDTH & DEFINED BORDERS)
        ======================================================================== -->
-  <header class="sticky top-0 z-40 bg-[var(--header-bg)] backdrop-blur-md border-b-[1.5px] border-[var(--border-defined)] px-4 lg:px-6 py-3 shadow-sm">
+  <header class="sticky top-0 z-40 bg-[var(--header-bg)] backdrop-blur-xl border-b-[1.5px] border-[var(--border-defined)] px-4 lg:px-6 py-3 shadow-xl">
     <div class="w-full max-w-[1920px] mx-auto flex flex-wrap items-center justify-between gap-4">
-      
+
       <!-- Brand Logo & Identity -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-purple-600 flex items-center justify-center shadow-md shadow-sky-500/20 text-white font-black text-xl">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-sky-500/30 text-white font-black text-xl header-brand">
           <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
           </svg>
         </div>
         <div>
           <div class="flex items-center gap-2">
             <h1 class="text-base font-extrabold tracking-tight text-[var(--text-primary)]">AURA</h1>
-            <span class="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-400 border border-sky-300 dark:border-sky-800">Home OS</span>
+            <span class="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-defined)]">Home OS</span>
           </div>
           <p class="text-xs text-[var(--text-muted)] font-medium">Adaptive IoT & Energy Architecture</p>
+
+          <!-- Live System Clock -->
+          <div class="mt-1 text-xs font-mono">
+            <span id="live-clock" class="text-emerald-400 font-bold">--:--:--</span>
+            <span class="text-slate-500 ml-1">System Time</span>
+          </div>
         </div>
       </div>
 
       <!-- Live MQTT Connection Pill -->
-      <button onclick="openMqttSettingsModal()" id="mqtt-status-badge" class="flex items-center gap-2 bg-[var(--bg-surface-elevated)] hover:bg-[var(--bg-surface-subtle)] px-3.5 py-1.5 rounded-full border-[1.5px] border-[var(--border-defined)] text-xs font-mono transition shadow-sm">
+      <button onclick="openMqttSettingsModal()" id="mqtt-status-badge" class="flex items-center gap-2 bg-[var(--bg-surface-elevated)] hover:bg-[var(--bg-surface-subtle)] px-3.5 py-1.5 rounded-full border-[1.5px] border-[var(--border-defined)] text-xs font-mono transition shadow-md">
         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm shadow-emerald-400 animate-pulse"></span>
         <span id="mqtt-status-text" class="text-[var(--text-primary)] font-semibold">Local Node Active</span>
         <svg class="w-3.5 h-3.5 text-[var(--text-dim)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -83,9 +89,9 @@
         </div>
       </div>
 
-      <!-- Right Header Actions (Dedicated Light / Dark Switch + Controls) -->
+      <!-- Right Header Actions -->
       <div class="flex items-center gap-3">
-        
+
         <!-- Mode Switcher (AUTO vs MANUAL) -->
         <div class="flex items-center p-1 bg-[var(--bg-surface-elevated)] rounded-xl border-[1.5px] border-[var(--border-defined)] text-xs font-bold">
           <button id="btn-mode-auto" onclick="setSystemMode('AUTO')" class="px-3 py-1 rounded-lg bg-sky-600 text-white shadow-sm transition-all flex items-center gap-1">
@@ -95,6 +101,18 @@
           <button id="btn-mode-manual" onclick="setSystemMode('MANUAL')" class="px-3 py-1 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all">
             MANUAL
           </button>
+        </div>
+
+        <!-- Network Status Indicator -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--bg-surface-elevated)] border-[1.5px] border-[var(--border-defined)] text-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="font-mono text-[var(--text-muted)]">192.168.1.42</span>
+        </div>
+
+        <!-- Battery Status -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--bg-surface-elevated)] border-[1.5px] border-[var(--border-defined)] text-xs">
+          <span class="text-amber-500">🔋</span>
+          <span class="font-mono text-[var(--text-muted)]">87%</span>
         </div>
 
         <!-- DEDICATED LIGHT / DARK THEME SWITCH PILL -->
@@ -108,7 +126,7 @@
         </div>
 
         <!-- Add Appliance Button -->
-        <button onclick="openAddDeviceModal()" class="w-9 h-9 rounded-xl bg-[var(--bg-surface-elevated)] hover:bg-[var(--bg-surface-subtle)] border-[1.5px] border-[var(--border-defined)] flex items-center justify-center text-[var(--text-primary)] transition shadow-sm" title="Add Appliance">
+        <button onclick="openAddDeviceModal()" class="w-9 h-9 rounded-xl bg-[var(--bg-surface-elevated)] hover:bg-[var(--bg-surface-subtle)] border-[1.5px] border-[var(--border-defined)] flex items-center justify-center text-[var(--text-primary)] transition shadow-md" title="Add Appliance">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
         </button>
 
@@ -118,16 +136,16 @@
   </header>
 
   <!-- ========================================================================
-       MASTER 3-COLUMN FULL-WIDTH LAYOUT (FILLS LEFT AND RIGHT GAPS)
+       MASTER 3-COLUMN FULL-WIDTH LAYOUT
        ======================================================================== -->
   <div class="w-full max-w-[1920px] mx-auto px-4 lg:px-6 py-6">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-      
+
       <!-- ====================================================================
-           COLUMN 1: LEFT SIDEBAR (ROOMS, NAVIGATION, RESIDENCE STATUS)
+           COLUMN 1: LEFT SIDEBAR
            ==================================================================== -->
       <aside class="lg:col-span-3 xl:col-span-2 space-y-5">
-        
+
         <!-- Residence Overview Card -->
         <div class="sidebar-panel p-4 space-y-3">
           <div class="flex items-center justify-between">
@@ -153,7 +171,7 @@
         <!-- Navigation Menu -->
         <div class="sidebar-panel p-3 space-y-1">
           <span class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[var(--text-dim)] block">Views & Modes</span>
-          
+
           <button onclick="switchTab('overview')" data-tab="overview" class="nav-tab-btn w-full px-3 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2.5 text-sky-700 bg-sky-50 dark:bg-sky-950/40 border-[1.5px] border-sky-300 dark:border-sky-800 transition text-left">
             <svg class="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
             Dashboard
@@ -193,7 +211,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <button onclick="filterRoom('all')" id="room-nav-all" class="w-full p-2.5 rounded-xl border-[1.5px] border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/40 flex items-center justify-between text-xs font-bold text-[var(--text-primary)] transition">
+            <button onclick="filterRoom('all')" id="room-nav-all" class="w-full p-2.5 rounded-xl border-[1.5px] border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/40 flex items-center justify-between text-xs font-bold text-sky-700 text-sky-700 dark:text-sky-400 transition">
               <span class="flex items-center gap-2">🏠 All Appliances</span>
               <span class="font-mono text-sky-700 dark:text-sky-400">8 Items</span>
             </button>
@@ -220,29 +238,36 @@
           </div>
         </div>
 
-        <!-- Weather & Outdoor Environment -->
-        <div class="sidebar-panel p-4 bg-gradient-to-br from-[var(--bg-surface)] to-sky-50/40 dark:to-sky-950/20 border-sky-200 dark:border-sky-900/60 space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-sky-800 dark:text-sky-400 uppercase tracking-wider">Outdoor Weather</span>
-            <span class="text-lg">🌤️</span>
+        <!-- Weather Widget with Live Location -->
+        <div class="sidebar-panel p-4 weather-widget bg-gradient-to-br from-[var(--bg-surface)] to-sky-50/40 dark:to-sky-950/20 border-sky-200 dark:border-sky-900/60">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-800 dark:text-sky-400 uppercase tracking-wider">Live Weather</span>
+            <span class="text-sm">📍 Home Zone</span>
           </div>
-          <div class="flex items-baseline justify-between">
-            <span class="text-2xl font-black text-[var(--text-primary)] font-mono">26.0°C</span>
-            <span class="text-xs text-sky-700 dark:text-sky-300 font-bold">Mostly Clear</span>
+          <div class="flex items-center justify-between text-2xl font-black">
+            <span id="weather-temp" class="font-mono text-[var(--text-primary)]">26.0°C</span>
+            <span id="weather-icon" class="text-3xl">🌤️</span>
           </div>
-          <div class="pt-2 border-t-[1.5px] border-[var(--border-subtle)] flex items-center justify-between text-[11px] text-[var(--text-muted)] font-mono">
-            <span>AQI: <strong class="text-emerald-600">42 (Good)</strong></span>
-            <span>Solar: <strong>85%</strong></span>
+          <div id="weather-desc" class="text-xs text-sky-700 dark:text-sky-300 font-bold mt-1">Mostly Clear</div>
+          <div class="pt-2 border-t-[1.5px] border-[var(--border-subtle)] grid grid-cols-2 gap-2 text-[11px] font-mono">
+            <div class="p-2 bg-[var(--bg-surface-subtle)] rounded-lg border border-[var(--border-subtle)]">
+              <span class="text-[var(--text-dim)] block">AQI</span>
+              <span class="text-emerald-600 font-bold" id="weather-aqi">42 (Good)</span>
+            </div>
+            <div class="p-2 bg-[var(--bg-surface-subtle)] rounded-lg border border-[var(--border-subtle)]">
+              <span class="text-[var(--text-dim)] block">Solar</span>
+              <span class="font-bold text-amber-600" id="weather-solar">85%</span>
+            </div>
           </div>
         </div>
 
       </aside>
 
       <!-- ====================================================================
-           COLUMN 2: CENTER MAIN CONTENT (DASHBOARD & APPLIANCE GRID)
+           COLUMN 2: CENTER MAIN CONTENT
            ==================================================================== -->
       <main class="lg:col-span-6 xl:col-span-7 space-y-6">
-        
+
         <!-- Manual Override Warning Banner -->
         <div id="override-banner" class="hidden aura-card border-[1.5px] border-amber-400 bg-amber-50 dark:bg-amber-950/30 p-4 flex items-center justify-between">
           <div class="flex items-center gap-3">
@@ -259,7 +284,7 @@
 
         <!-- TAB 1: OVERVIEW DASHBOARD -->
         <div id="tab-overview" class="tab-content-panel space-y-6">
-          
+
           <!-- Quick Scene Pills -->
           <div class="flex items-center gap-2 overflow-x-auto pb-1">
             <span class="text-xs text-[var(--text-dim)] uppercase font-mono font-bold mr-1">Scenes:</span>
@@ -282,7 +307,7 @@
 
           <!-- 4 Main Environmental Sensor Gauges -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-            
+
             <!-- Temperature (Coral Rose) -->
             <div class="aura-card p-4 bg-gradient-to-br from-[var(--bg-surface)] to-rose-50/50 dark:to-rose-950/20 border-rose-300 dark:border-rose-900/60 flex items-center justify-between">
               <div>
@@ -339,7 +364,7 @@
               <h3 class="text-base font-extrabold text-[var(--text-primary)]">Connected Appliances</h3>
               <p class="text-xs text-[var(--text-muted)]">Real-time status, relay actuators & tactile sliders</p>
             </div>
-            <button onclick="openAddDeviceModal()" class="px-3.5 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
+            <button onclick="openAddDeviceModal()" class="px-3.5 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
               Add Appliance
             </button>
@@ -359,7 +384,7 @@
               <span class="text-lg">🧠</span> Active Automation Rules
             </h3>
             <p class="text-xs text-[var(--text-muted)]">Rules continuously evaluate against incoming sensor telemetry</p>
-            
+
             <div class="space-y-3">
               <div class="p-3.5 bg-[var(--bg-surface-elevated)] rounded-xl border-[1.5px] border-[var(--border-defined)] flex items-center justify-between">
                 <div>
@@ -402,7 +427,7 @@
               <span class="text-lg">📐</span> Edge-Layer Mamdani Fuzzy Controller
             </h3>
             <p class="text-xs text-[var(--text-muted)]">Non-linear membership curves eliminate mechanical relay contact bouncing</p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="p-3 bg-[var(--bg-surface-elevated)] rounded-xl border-[1.5px] border-[var(--border-defined)] space-y-2">
                 <h5 class="text-xs font-bold text-rose-600">Temperature (°C)</h5>
@@ -454,7 +479,7 @@
         <div id="tab-hardware-mqtt" class="tab-content-panel hidden space-y-6">
           <div class="aura-card p-6 space-y-4">
             <h3 class="text-base font-bold text-[var(--text-primary)]">Live MQTT Message Bus Stream</h3>
-            <div class="p-3.5 bg-slate-900 rounded-xl border border-slate-800 font-mono text-xs max-h-56 overflow-y-auto text-emerald-400" id="mqtt-log-console"></div>
+            <div class="p-3.5 bg-[var(--bg-surface-elevated)] rounded-xl border border-[var(--border-defined)] font-mono text-xs max-h-56 overflow-y-auto text-emerald-400" id="mqtt-log-console"></div>
           </div>
         </div>
 
@@ -465,7 +490,7 @@
               <h3 class="text-base font-bold text-[var(--text-primary)]">ESP32 C++ Firmware Source Code</h3>
               <button onclick="copyFirmwareCode()" class="px-3.5 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-xl text-xs font-bold">Copy C++ Code</button>
             </div>
-            <textarea id="esp32-code-output" readonly class="w-full h-[480px] p-4 bg-slate-950 text-emerald-400 font-mono text-xs rounded-xl border border-slate-800 focus:outline-none"></textarea>
+            <textarea id="esp32-code-output" readonly class="w-full h-[480px] p-4 bg-[var(--bg-surface-elevated)] text-emerald-400 font-mono text-xs rounded-xl border border-[var(--border-defined)] focus:outline-none"></textarea>
           </div>
         </div>
 
@@ -480,11 +505,11 @@
       </main>
 
       <!-- ====================================================================
-           COLUMN 3: RIGHT SIDEBAR (LIVE TELEMETRY, RELAY MODULE & QUICK BENCH)
+           COLUMN 3: RIGHT SIDEBAR
            ==================================================================== -->
       <aside class="lg:col-span-3 xl:col-span-3 space-y-5">
-        
-        <!-- Master Emergency Cutoff Button (Defined, Bold & Visible) -->
+
+        <!-- Master Emergency Cutoff Button -->
         <div class="sidebar-panel p-4 bg-rose-50/80 dark:bg-rose-950/30 border-rose-300 dark:border-rose-900/80 space-y-2.5">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold text-rose-700 dark:text-rose-300 uppercase tracking-wider">Hardware Killswitch</span>
@@ -503,11 +528,11 @@
             <span class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] dark:text-slate-300">Live Power Meter</span>
             <span class="text-xs font-mono font-bold text-sky-600 dark:text-sky-400">Tariff: ₹7.50/kWh</span>
           </div>
-          
+
           <div class="p-4 bg-[var(--bg-surface-elevated)] rounded-xl border-[1.5px] border-[var(--border-defined)] text-center space-y-1">
             <span class="text-[11px] text-slate-600 dark:text-slate-300 font-mono uppercase font-bold">Instant Consumption</span>
             <div id="side-power-val" class="text-3xl font-black text-sky-600 dark:text-sky-400 font-mono">858.0 W</div>
-            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden mt-2">
+            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
               <div class="bg-gradient-to-r from-emerald-500 via-sky-500 to-amber-500 h-2" style="width: 58%"></div>
             </div>
             <div class="flex justify-between text-[11px] text-slate-600 dark:text-slate-300 font-mono pt-1 font-bold">
@@ -570,7 +595,7 @@
           </div>
         </div>
 
-        <!-- Real-Time Environmental Injection Sliders (Fast Interactive Testing) -->
+        <!-- Real-Time Environmental Injection Sliders -->
         <div class="sidebar-panel p-4 space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Live Test Bench</span>
@@ -608,7 +633,7 @@
           </div>
         </div>
 
-        <!-- Live Activity Stream (Compact Sidebar Feed) -->
+        <!-- Live Activity Stream -->
         <div class="sidebar-panel p-4 space-y-2.5">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Live Activity</span>
@@ -683,7 +708,7 @@
         <button onclick="closeModal('modal-mqtt-settings')" class="px-4 py-2 bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] font-bold rounded-xl">
           Cancel
         </button>
-        <button onclick="saveMqttSettings()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl shadow-sm">
+        <button onclick="saveMqttSettings()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl shadow-md">
           Save & Connect
         </button>
       </div>
@@ -756,7 +781,7 @@
           <button onclick="closeModal('modal-device-manager')" class="px-4 py-2 bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] font-semibold rounded-xl">
             Cancel
           </button>
-          <button onclick="saveDeviceFromModal()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl shadow-sm">
+          <button onclick="saveDeviceFromModal()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl shadow-md">
             Save Appliance
           </button>
         </div>
@@ -765,6 +790,67 @@
   </div>
 
   <!-- Core Engine Script -->
-  <script src="app.js?v=4.0"></script>
+  <script src="app.js?v=5.0"></script>
 </body>
 </html>
+
+<!-- Aurora Orbs -->
+<div class="aurora-orb blue"></div>
+<div class="aurora-orb purple"></div>
+<div class="aurora-orb pink"></div>
+
+<!-- Weather Data Script -->
+<script>
+  // Live Clock already in app.js
+
+  // Weather Simulation (in case no real API)
+  function updateWeather() {
+    const now = new Date();
+    const hour = now.getHours();
+
+    // Simulated weather based on time of day
+    let temp = 26;
+    let desc = 'Mostly Clear';
+    let aqi = 42;
+    let solar = 85;
+    let icon = '🌤️';
+
+    if (hour >= 5 && hour < 8) {
+      temp = 18;
+      desc = 'Clear Morn';
+      icon = '☀️';
+    } else if (hour >= 8 && hour < 12) {
+      temp = 24;
+      desc = 'Partly Cloudy';
+      icon = '⛅';
+    } else if (hour >= 12 && hour < 15) {
+      temp = 28;
+      desc = 'Sunny';
+      icon = '☀️';
+    } else if (hour >= 15 && hour < 18) {
+      temp = 26;
+      desc = 'Afternoon Clear';
+      icon = '🌤️';
+    } else if (hour >= 18 && hour < 21) {
+      temp = 22;
+      desc = 'Clear Evening';
+      icon = '🌆';
+    } else {
+      temp = 20;
+      desc = 'Clear Night';
+      aqi = 38;
+      solar = 65;
+      icon = '🌙';
+    }
+
+    document.getElementById('weather-temp').textContent = temp + '°C';
+    document.getElementById('weather-desc').textContent = desc;
+    document.getElementById('weather-icon').textContent = icon;
+    document.getElementById('weather-aqi').textContent = aqi + ' (Good)';
+    document.getElementById('weather-solar').textContent = solar + '%';
+  }
+
+  // Update weather each minute
+  updateWeather();
+  setInterval(updateWeather, 60000);
+</script>

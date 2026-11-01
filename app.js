@@ -1729,4 +1729,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Start Main Loop
   startEngineLoop();
-});
+
+  // Live Clock Update
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById('live-clock').textContent = `${hours}:${minutes}:${seconds}`;
+  }
+  setInterval(updateClock, 1000);
+  updateClock(); // Initial call
+}
