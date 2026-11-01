@@ -961,7 +961,7 @@ function updateSensorReadouts() {
   if (lightEl) lightEl.textContent = `${AppState.sensors.light} Lux`;
   if (motionEl) {
     motionEl.textContent = AppState.sensors.motion ? 'Occupied' : 'Vacant';
-    motionEl.className = AppState.sensors.motion ? 'text-emerald-400 font-bold' : 'text-amber-400 font-bold';
+    motionEl.className = `text-2xl font-black font-mono mt-0.5 ${AppState.sensors.motion ? 'text-emerald-400' : 'text-amber-400'}`;
   }
 }
 
@@ -1740,4 +1740,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   setInterval(updateClock, 1000);
   updateClock(); // Initial call
-}
+});
